@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\PWM.obj" 
+TO ".\Objects\PWM_DC_MOTOR" 
+PRINT(".\Listings\PWM_DC_MOTOR.m51") RAMSIZE(256) 
