@@ -1,0 +1,6 @@
+"STARTUP.obj",
+"main.obj",
+"lcd_drive.obj",
+"gui.obj",
+"touch.obj" 
+TO "pro" 

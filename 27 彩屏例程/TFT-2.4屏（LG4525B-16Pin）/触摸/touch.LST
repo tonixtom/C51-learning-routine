@@ -1,0 +1,182 @@
+C51 COMPILER V9.01   TOUCH                                                                 12/26/2014 16:50:30 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE TOUCH
+OBJECT MODULE PLACED IN touch.OBJ
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE touch.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include"touch.h"
+   2          
+   3          void TOUCH_SPI_Start(void)
+   4          {
+   5   1              TOUCH_CLK = 0;
+   6   1              TOUCH_CS  = 1;
+   7   1              TOUCH_DIN = 1;
+   8   1              TOUCH_CLK = 1;
+   9   1              TOUCH_CS  = 0;          
+  10   1      }
+  11          
+  12          void TOUCH_SPI_Write(uchar dat)
+  13          {
+  14   1              uchar i;
+  15   1              TOUCH_CLK = 0;
+  16   1              for(i=0; i<8; i++)
+  17   1              {
+  18   2                      TOUCH_DIN = dat >>7;    //放置最高位
+  19   2                      dat <<= 1;
+  20   2                      TOUCH_CLK = 0;                  //上升沿放置数据
+  21   2      
+  22   2                      TOUCH_CLK = 1;
+  23   2      
+  24   2              }
+  25   1      }
+  26          
+  27          uint TOUCH_SPI_Read(void)
+  28          {
+  29   1              uint i, dat=0;
+  30   1              TOUCH_CLK = 0;
+  31   1              for(i=0; i<12; i++)             //接收12位数据
+  32   1              {
+  33   2                      dat <<= 1;
+  34   2      
+  35   2                      TOUCH_CLK = 1;
+  36   2                      TOUCH_CLK = 0;
+  37   2      
+  38   2                      dat |= TOUCH_DOUT;
+  39   2      
+  40   2              }
+  41   1              return dat;     
+  42   1      }
+  43          
+  44          #define XY_READ_TIMS  10                   //读取的次数
+  45          
+  46          uint TOUCH_XPT_ReadData(uchar cmd)
+  47          {
+  48   1              uchar i, j;
+  49   1              uint readValue[XY_READ_TIMS];
+  50   1              long endValue;
+  51   1      
+  52   1              TOUCH_CLK = 0;    //先拉低时间
+  53   1              TOUCH_CS  = 0;    //选中芯片
+  54   1              
+  55   1              for(i=0; i<XY_READ_TIMS; i++)           //读取XY_READ_TIMS次结果
+C51 COMPILER V9.01   TOUCH                                                                 12/26/2014 16:50:30 PAGE 2   
+
+  56   1              {       
+  57   2                      TOUCH_SPI_Write(cmd);  //发送转换命令
+  58   2                      //Delay_6us();
+  59   2                      for(j=6; j>0; j--);     //延时等待转换结果
+  60   2                      TOUCH_CLK = 1;    //发送一个时钟周期，清除BUSY
+  61   2                      _nop_();
+  62   2                      _nop_();
+  63   2                      TOUCH_CLK = 0;
+  64   2                      _nop_();
+  65   2                      _nop_();
+  66   2              
+  67   2                      readValue[i] = TOUCH_SPI_Read();
+  68   2              }
+  69   1              TOUCH_CS = 1; //释放片选
+  70   1      
+  71   1              //---软件滤波---//
+  72   1              //---先大到小排序，除去最高值，除去最低值，求其平均值---//
+  73   1              for(i=0; i<XY_READ_TIMS - 1; i++)       //从大到小排序
+  74   1              {
+  75   2                      for(j= i+1; j<XY_READ_TIMS; j++)
+  76   2                      {
+  77   3                              if(readValue[i] < readValue[j])
+  78   3                              {
+  79   4                                      endValue = readValue[i];
+  80   4                                      readValue[i] = readValue[j];
+  81   4                                      readValue[j] = endValue;
+  82   4                              }  
+  83   3                      }
+  84   2              }
+  85   1      //      if((readValue[2] - readValue[3]) > 5)
+  86   1      //      {
+  87   1      //              return 0;
+  88   1      //      }
+  89   1              endValue = 0;
+  90   1              for(i=2; i<XY_READ_TIMS-2; i++)            
+  91   1              {
+  92   2                      endValue += readValue[i]; 
+  93   2              }
+  94   1              endValue = endValue/ (XY_READ_TIMS - 4);//求平均值
+  95   1      
+  96   1              return endValue;
+  97   1      }
+  98          
+  99          
+ 100          XPT_XY xpt_xy;   //定义一个全局变量保存X、Y的值
+ 101          uchar TOUCH_XPT_ReadXY(void)
+ 102          {       
+ 103   1              uint x1, x2, x, y1, y2, y;
+ 104   1      
+ 105   1              TOUCH_SPI_Start();
+ 106   1              //---分别读两次X值和Y值, 交叉着读可以提高一些读取精度---//
+ 107   1              x1 = TOUCH_XPT_ReadData(XPT_CMD_X);
+ 108   1              y1 = TOUCH_XPT_ReadData(XPT_CMD_Y);
+ 109   1              x2 = TOUCH_XPT_ReadData(XPT_CMD_X);
+ 110   1              y2 = TOUCH_XPT_ReadData(XPT_CMD_Y);
+ 111   1      
+ 112   1              //---求取X值的差值---//
+ 113   1              if (x1 > x2)
+ 114   1              {
+ 115   2                      x = x1 - x2;
+ 116   2              }
+ 117   1              else
+C51 COMPILER V9.01   TOUCH                                                                 12/26/2014 16:50:30 PAGE 3   
+
+ 118   1              {
+ 119   2                      x = x2 - x1;
+ 120   2              }
+ 121   1      
+ 122   1              //---求取Y值的差值---//
+ 123   1              if (y1 > y2)
+ 124   1              {
+ 125   2                      y = y1 - y2;
+ 126   2              }
+ 127   1              else
+ 128   1              {
+ 129   2                      y = y2 - y1;
+ 130   2              }
+ 131   1      
+ 132   1              //---判断差值是否大于50，大于就返回0，表示读取失败---//
+ 133   1              if((x > 50) || (y > 50))  
+ 134   1              {
+ 135   2                      return 0;
+ 136   2              }
+ 137   1      
+ 138   1              //---求取两次读取值的平均数作为读取到的XY值---//
+ 139   1              xpt_xy.x = (x1 + x2) / 2;
+ 140   1              xpt_xy.y = (y1 + y2) / 2;
+ 141   1      
+ 142   1              xpt_xy.x &= 0xFFF0;     //去掉低四位
+ 143   1              xpt_xy.y &= 0xFFF0;
+ 144   1               
+ 145   1              //---确定XY值的范围，用在触摸屏大于TFT时---//
+ 146   1              if((xpt_xy.x < 100) || (xpt_xy.y > 3800))
+ 147   1              {
+ 148   2                      return 0;
+ 149   2              }
+ 150   1      
+ 151   1              return 1;  // 返回1，表示读取成功
+ 152   1      }
+ 153          
+ 154          
+ 155          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    504    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4      35
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,57 @@
+C51 COMPILER V9.01   MAIN                                                                  12/16/2014 14:08:37 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: d:\Keil\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "REG51.H"
+   2          #include "lcd_driver.h"
+   3          #include "gui.h"
+   4          
+   5          /****************************************************************************
+   6          *函数名：main
+   7          *输  入：无
+   8          *输  出：无
+   9          *功  能：主函数
+  10          ****************************************************************************/
+  11          
+  12          void main (void)
+  13          {
+  14   1              TFT_Init();                   //初始化TFT
+  15   1              TFT_ClearScreen(BLACK);           //刷黑色
+  16   1      
+  17   1              while(1)
+  18   1              {
+  19   2                      GUI_Write32CnChar(25, 24, "普中科技", RED, BLACK);
+  20   2                      GUI_Line(30, 54, 150, 54, RED);
+  21   2                      GUI_WriteASCII(0, 65, "2013", RED, BLACK);
+  22   2                      GUI_Write32CnChar(64, 60, "年", RED, BLACK);
+  23   2                      GUI_WriteASCII(90, 65, "12", RED, BLACK);
+  24   2                      GUI_Write32CnChar(122, 60, "月", RED, BLACK);
+  25   2                      GUI_WriteASCII(150, 65, "31", RED, BLACK);
+  26   2                      GUI_Write32CnChar(186, 60, "日", RED, BLACK);
+  27   2                      GUI_WriteASCII(0, 100, "12-00-00", RED, BLACK);
+  28   2                      GUI_Write32CnChar(0, 140, "星期", RED, BLACK);
+  29   2                      GUI_WriteASCII(70, 140, "2", RED, BLACK);
+  30   2                      while(1);
+  31   2              }               
+  32   1      }
+  33          
+  34                  
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    293    ----
+   CONSTANT SIZE    =     45    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

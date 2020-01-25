@@ -1,0 +1,77 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\Administrator\Desktop\2.4∆¡£®T220BFL-16Pin£©\œ‘ æÕº∆¨2\pro.uvproj
+Project File Date:  09/17/2014
+
+<h2>Output:</h2>
+compiling main.c...
+main.c - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling gui.c...
+gui.c(6): warning C318: can't open file 'picture.h'
+GUI.C(263): error C202: 'pic': undefined identifier
+GUI.C(265): error C202: 'pic': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling gui.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GUI_LINE?GUI
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GUI_WRITE32CNCHAR?GUI
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GUI_SHOWPICTURE?GUI
+Program Size: data=75.0 xdata=0 code=5949
+creating hex file from "pro"...
+"pro" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GUI_LINE?GUI
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GUI_WRITE32CNCHAR?GUI
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GUI_SHOWPICTURE?GUI
+Program Size: data=75.0 xdata=0 code=5949
+creating hex file from "pro"...
+"pro" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GUI_LINE?GUI
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GUI_WRITE32CNCHAR?GUI
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_GUI_SHOWPICTURE?GUI
+Program Size: data=75.0 xdata=0 code=5949
+creating hex file from "pro"...
+"pro" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=45.0 xdata=0 code=5974
+creating hex file from "pro"...
+"pro" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=45.0 xdata=0 code=5974
+creating hex file from "pro"...
+"pro" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=45.0 xdata=0 code=5974
+creating hex file from "pro"...
+"pro" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=45.0 xdata=0 code=5974
+creating hex file from "pro"...
+"pro" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=45.0 xdata=0 code=5974
+creating hex file from "pro"...
+"pro" - 0 Error(s), 0 Warning(s).

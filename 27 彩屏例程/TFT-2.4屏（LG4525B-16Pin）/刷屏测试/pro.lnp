@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"main.obj",
+"lcd_driver.obj" 
+TO "pro" 

@@ -1,0 +1,16 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+F:\办公资料\V3.0更新光盘资料\步骤3 51单片机例程\1、LED灯\跑马灯\C版\led.uvproj
+Project File Date:  08/26/2014
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling LED.C...
+linking...
+Program Size: data=10.0 xdata=0 code=68
+creating hex file from "led"...
+"led" - 0 Error(s), 0 Warning(s).
