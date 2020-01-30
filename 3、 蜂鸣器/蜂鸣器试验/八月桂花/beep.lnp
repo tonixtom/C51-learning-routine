@@ -1,4 +1,0 @@
-"STARTUP.obj",
-"beep.obj" 
-TO "beep" 
-RAMSIZE(256) 
