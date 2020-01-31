@@ -57,7 +57,7 @@ if [ -z "$1" ]
 else
 	param=$1
 fi
-tom="试验必看.doc"
+tom="实验步骤.doc"
 tom1="step.doc"
 tom2="Wiring_diagram.jpg"
 tom3="state.txt"
