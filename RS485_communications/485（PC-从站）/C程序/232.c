@@ -14,7 +14,8 @@
 #include <REG52.H>
 #include <stdio.h>
 
-sbit RS485E=P3^7;   //定义485的使能脚
+//sbit RS485E=P3^7;   //定义485的使能脚
+sbit RS485E=P1^2;   //定义485的使能脚
 bit SendFlag;
 unsigned int ReData,SenData;
 
@@ -43,6 +44,7 @@ void main (void) {
 		EA   = 1;        // 开总中断 
 	
 	   // IE = 0x0;
+	SenData = 1;
    
 	while(1)
     { 
