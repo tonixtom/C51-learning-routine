@@ -1,0 +1,5 @@
+".\output\lcd.obj",
+".\output\main.obj",
+".\output\temp.obj" 
+TO ".\output\pro" 
+PRINT(".\listing\pro.m51")
