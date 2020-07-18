@@ -1,0 +1,214 @@
+C51 COMPILER V9.54   MAIN                                                                  07/18/2020 22:11:53 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\output\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE src\main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\listing\m
+                    -ain.lst) TABS(2) OBJECT(.\output\main.obj)
+
+line level    source
+
+   1          /*******************************************************************************
+   2          *                 
+   3          *                            普中科技
+   4          --------------------------------------------------------------------------------
+   5          * 实 验 名     : 24C02EEPROM存储试验
+   6          * 实验说明       : 使用LCD1602显示写入的数据和读出的数据
+   7          * 连接方式       : 见连接图
+   8          * 注    意     : 
+   9          *******************************************************************************/
+  10          #include<reg51.h>
+  11          #include"i2c.h"
+  12          #include"lcd.h"
+  13          
+  14          //--定义使用的IO口--//
+  15          //数码管IO
+  16          #define GPIO_DIG  P0
+  17          sbit LSA=P2^2;
+  18          sbit LSB=P2^3;
+  19          sbit LSC=P2^4;
+  20          //按键IO
+  21          sbit K1=P3^0;
+  22          sbit K2=P3^1;
+  23          sbit K3=P3^2;
+  24          sbit K4=P3^3;
+  25          
+  26          //--定义全局变量--//
+  27          unsigned char wordCode0[6] = "write:";
+  28          unsigned char wordCode1[6] = " read:"; 
+  29          
+  30          //--声明全局函数--//
+  31          void At24c02Write(unsigned char ,unsigned char );
+  32          unsigned char At24c02Read(unsigned char );
+  33          void Delay10ms(unsigned int c);   //误差 0us
+  34          
+  35          
+  36          /*******************************************************************************
+  37          * 函数名         : main
+  38          * 函数功能     : 主函数
+  39          * 输入           : 无
+  40          * 输出           : 无
+  41          *******************************************************************************/
+  42          
+  43          void main()
+  44          {
+  45   1        unsigned int num0 = 0,num1 = 0,n;
+  46   1      
+  47   1        LcdInit();
+  48   1      
+  49   1        LcdWriteCom(0x80);
+  50   1        for(n=0; n<6; n++)
+  51   1        {
+  52   2          LcdWriteData(wordCode0[n]);
+  53   2        }
+  54   1        LcdWriteCom(0x80 + 0x40);
+C51 COMPILER V9.54   MAIN                                                                  07/18/2020 22:11:53 PAGE 2   
+
+  55   1        for(n=0; n<6; n++)
+  56   1        {
+  57   2          LcdWriteData(wordCode1[n]);
+  58   2        }
+  59   1        while(1)
+  60   1        {
+  61   2          if(K1 == 0)    //按键1按下
+  62   2          {
+  63   3            Delay10ms(1);
+  64   3            if(K1 == 0)
+  65   3              At24c02Write(2,num0);
+  66   3            while((n < 50)&&(K3==0))
+  67   3            {
+  68   4              n++;
+  69   4              Delay10ms(1); 
+  70   4            }     
+  71   3            n=0;
+  72   3            n=0;
+  73   3          }
+  74   2          
+  75   2          if(K2 == 0)    //按键2按下
+  76   2          {
+  77   3            Delay10ms(1);
+  78   3            if(K2 == 0)
+  79   3              num1 = At24c02Read(2);
+  80   3            while((n < 50)&&(K2 == 0))
+  81   3            {
+  82   4              n++;
+  83   4              Delay10ms(1); 
+  84   4            }     
+  85   3            n=0;
+  86   3          }     
+  87   2          if(K3 == 0)    //按键3按下
+  88   2          {
+  89   3            Delay10ms(1);
+  90   3            if(K3 == 0)
+  91   3              num0++;
+  92   3            while((n < 50)&&(K3 == 0))
+  93   3            {
+  94   4              n++;
+  95   4              Delay10ms(1); 
+  96   4            }     
+  97   3            n=0;
+  98   3            if(num0==256)
+  99   3              num0=0;
+ 100   3          }
+ 101   2            
+ 102   2          if(K4 == 0)    //按键4按下
+ 103   2          {
+ 104   3            Delay10ms(1);
+ 105   3            if(K4 == 0)
+ 106   3              num0 = 0;
+ 107   3            while((n < 50) && (K4 == 0))
+ 108   3            {
+ 109   4              n++;
+ 110   4              Delay10ms(1); 
+ 111   4            }     
+ 112   3            n=0;
+ 113   3          }
+ 114   2      
+ 115   2          LcdWriteCom(0x87);    
+ 116   2          LcdWriteData('0' + (num0/1000));//千位    
+C51 COMPILER V9.54   MAIN                                                                  07/18/2020 22:11:53 PAGE 3   
+
+ 117   2          LcdWriteData('0' + (num0%1000/100));//百位          
+ 118   2          LcdWriteData('0' + (num0%1000%100/10));//十位
+ 119   2          LcdWriteData('0' + (num0%1000%100%10));//个位
+ 120   2      
+ 121   2          LcdWriteCom(0x87 + 0x40);
+ 122   2          LcdWriteData('0' + (num1/1000));//千位    
+ 123   2          LcdWriteData('0' + (num1%1000/100));//百位          
+ 124   2          LcdWriteData('0' + (num1%1000%100/10));//十位
+ 125   2          LcdWriteData('0' + (num1%1000%100%10));//个位
+ 126   2            
+ 127   2        }
+ 128   1      }                  
+ 129          
+ 130          /*******************************************************************************
+ 131          * 函 数 名         : Delay10ms
+ 132          * 函数功能       : 延时函数，延时10ms
+ 133          * 输    入         : 无
+ 134          * 输    出         : 无
+ 135          *******************************************************************************/
+ 136          
+ 137          void Delay10ms(unsigned int c)   //误差 0us
+ 138          {
+ 139   1          unsigned char a, b;
+ 140   1      
+ 141   1        //--c已经在传递过来的时候已经赋值了，所以在for语句第一句就不用赋值了--//
+ 142   1          for (;c>0;c--)
+ 143   1        {
+ 144   2          for (b=38;b>0;b--)
+ 145   2          {
+ 146   3            for (a=130;a>0;a--);
+ 147   3          }          
+ 148   2        }       
+ 149   1      }
+ 150          
+ 151          /*******************************************************************************
+ 152          * 函 数 名         : void At24c02Write(unsigned char addr,unsigned char dat)
+ 153          * 函数功能       : 往24c02的一个地址写入一个数据
+ 154          * 输    入         : 无
+ 155          * 输    出         : 无
+ 156          *******************************************************************************/
+ 157          
+ 158          void At24c02Write(unsigned char addr,unsigned char dat)
+ 159          {
+ 160   1        I2C_Start();
+ 161   1        I2C_SendByte(0xa0, 1);//发送写器件地址
+ 162   1        I2C_SendByte(addr, 1);//发送要写入内存地址
+ 163   1        I2C_SendByte(dat, 0); //发送数据
+ 164   1        I2C_Stop();
+ 165   1      }
+ 166          /*******************************************************************************
+ 167          * 函 数 名         : unsigned char At24c02Read(unsigned char addr)
+ 168          * 函数功能       : 读取24c02的一个地址的一个数据
+ 169          * 输    入         : 无
+ 170          * 输    出         : 无
+ 171          *******************************************************************************/
+ 172          
+ 173          unsigned char At24c02Read(unsigned char addr)
+ 174          {
+ 175   1        unsigned char num;
+ 176   1        I2C_Start();
+ 177   1        I2C_SendByte(0xa0, 1); //发送写器件地址
+ 178   1        I2C_SendByte(addr, 1); //发送要读取的地址
+C51 COMPILER V9.54   MAIN                                                                  07/18/2020 22:11:53 PAGE 4   
+
+ 179   1        I2C_Start();
+ 180   1        I2C_SendByte(0xa1, 1); //发送读器件地址
+ 181   1        num=I2C_ReadByte(); //读取数据
+ 182   1        I2C_Stop();
+ 183   1        return num; 
+ 184   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    684    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     12      10
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

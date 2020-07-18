@@ -1,0 +1,5 @@
+".\output\i2c.obj",
+".\output\lcd.obj",
+".\output\main.obj" 
+TO ".\output\pro" 
+PRINT(".\listing\pro.m51")
