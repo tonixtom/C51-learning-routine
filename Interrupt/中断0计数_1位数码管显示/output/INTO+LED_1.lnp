@@ -1,0 +1,3 @@
+".\output\LED_1.obj" 
+TO ".\output\INTO+LED_1" 
+PRINT(".\listing\INTO+LED_1.m51") RAMSIZE(256) 

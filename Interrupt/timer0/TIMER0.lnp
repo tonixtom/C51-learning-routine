@@ -1,4 +1,0 @@
-"STARTUP.obj",
-"TIMEER0.obj" 
-TO "TIMER0" 
-RAMSIZE(256) 

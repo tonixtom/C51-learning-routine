@@ -1,4 +1,0 @@
-"STARTUP.obj",
-"INT0+INT1.obj" 
-TO "int0+int1" 
-RAMSIZE(256) 

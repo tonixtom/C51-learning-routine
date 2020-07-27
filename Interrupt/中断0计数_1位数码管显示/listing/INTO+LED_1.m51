@@ -1,0 +1,96 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        07/27/2020  10:52:51  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\output\LED_1.obj TO .\output\INTO+LED_1 PRINT (.\listing\INTO+LED_1.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\LED_1.obj (LED_1)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
+
+
+LINK MAP OF MODULE:  .\output\INTO+LED_1 (LED_1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         ?DT?LED_1
+            IDATA   000AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+            CODE    0006H     0055H     UNIT         ?C?LIB_CODE
+            CODE    005BH     0021H     UNIT         ?PR?MAIN?LED_1
+            CODE    007CH     0015H     UNIT         ?CO?LED_1
+            CODE    0091H     0011H     UNIT         ?PR?COUNTER?LED_1
+            CODE    00A2H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\output\INTO+LED_1 (LED_1)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?LED_1
+
+?PR?MAIN?LED_1
+  +--> ?CO?LED_1
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\INTO+LED_1 (LED_1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        LED_1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  C:0091H         PUBLIC        counter
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/27/2020  10:52:51  PAGE 2
+
+
+  B:00A8H.7       PUBLIC        EA
+  C:007CH         PUBLIC        Disp_Tab
+  C:005BH         PUBLIC        main
+  B:00A8H.0       PUBLIC        EX0
+  B:0088H.0       PUBLIC        IT0
+  D:0008H         PUBLIC        LedNumVal
+  -------         PROC          MAIN
+  C:005BH         LINE#         23
+  C:005BH         LINE#         24
+  C:005BH         LINE#         27
+  C:005DH         LINE#         28
+  C:005FH         LINE#         29
+  C:0061H         LINE#         31
+  C:0061H         LINE#         32
+  C:0061H         LINE#         33
+  C:007AH         LINE#         34
+  -------         ENDPROC       MAIN
+  -------         PROC          COUNTER
+  C:0091H         LINE#         39
+  C:0093H         LINE#         41
+  C:0095H         LINE#         42
+  C:009DH         LINE#         43
+  C:009FH         LINE#         44
+  -------         ENDPROC       COUNTER
+  -------         ENDMOD        LED_1
+
+  -------         MODULE        ?C?UIDIV
+  C:0006H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+Program Size: data=11.0 xdata=0 code=174
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

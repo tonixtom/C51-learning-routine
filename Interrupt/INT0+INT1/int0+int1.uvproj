@@ -45,7 +45,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\output\</OutputDirectory>
-          <OutputName>TIMER0</OutputName>
+          <OutputName>int0+int1</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -364,9 +364,9 @@
           <GroupName>code</GroupName>
           <Files>
             <File>
-              <FileName>TIMEER0.C</FileName>
+              <FileName>INT0+INT1.C</FileName>
               <FileType>1</FileType>
-              <FilePath>.\TIMEER0.C</FilePath>
+              <FilePath>.\INT0+INT1.C</FilePath>
             </File>
           </Files>
         </Group>

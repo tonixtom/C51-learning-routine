@@ -1,0 +1,153 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        07/27/2020  10:50:40  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\output\TIMEER0.obj TO .\output\TIMER0 PRINT (.\listing\TIMER0.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\TIMEER0.obj (TIMEER0)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
+
+
+LINK MAP OF MODULE:  .\output\TIMER0 (TIMEER0)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0012H     UNIT         ?DT?TIMEER0
+            DATA    001AH     0001H     UNIT         _DATA_GROUP_
+            IDATA   001BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     010FH     UNIT         ?PR?MAIN?TIMEER0
+            CODE    011DH     0055H     UNIT         ?C?LIB_CODE
+            CODE    0172H     001EH     UNIT         ?PR?_DELAY?TIMEER0
+            CODE    0190H     0015H     UNIT         ?CO?TIMEER0
+            CODE    01A5H     0013H     UNIT         ?PR?T0ZD?TIMEER0
+            CODE    01B8H     000FH     UNIT         ?PR?SYSTEM_INI?TIMEER0
+            CODE    01C7H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\output\TIMER0 (TIMEER0)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?TIMEER0
+
+?PR?MAIN?TIMEER0               001AH    0001H
+  +--> ?PR?SYSTEM_INI?TIMEER0
+  +--> ?CO?TIMEER0
+  +--> ?PR?_DELAY?TIMEER0
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\TIMER0 (TIMEER0)
+
+  VALUE           TYPE          NAME
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/27/2020  10:50:40  PAGE 2
+
+
+  ----------------------------------
+
+  -------         MODULE        TIMEER0
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  B:00A0H.3       PUBLIC        LS138B
+  B:00A0H.4       PUBLIC        LS138C
+  D:0080H         PUBLIC        P0
+  D:00A0H         PUBLIC        P2
+  C:0190H         PUBLIC        Disp_Tab
+  D:00A8H         PUBLIC        IE
+  C:0172H         PUBLIC        _delay
+  C:000EH         PUBLIC        main
+  C:01B8H         PUBLIC        system_Ini
+  D:0089H         PUBLIC        TMOD
+  D:008CH         PUBLIC        TH0
+  D:0008H         PUBLIC        LedOut
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  C:01A5H         PUBLIC        T0zd
+  D:0018H         PUBLIC        LedNumVal
+  B:00A0H.2       PUBLIC        LS138A
+  -------         PROC          SYSTEM_INI
+  C:01B8H         LINE#         27
+  C:01B8H         LINE#         28
+  C:01B8H         LINE#         29
+  C:01BBH         LINE#         33
+  C:01BEH         LINE#         34
+  C:01C1H         LINE#         35
+  C:01C4H         LINE#         36
+  C:01C6H         LINE#         39
+  -------         ENDPROC       SYSTEM_INI
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        i
+  -------         DO            
+  D:0005H         SYMBOL        j
+  -------         ENDDO         
+  C:0172H         LINE#         41
+  C:0172H         LINE#         42
+  C:0172H         LINE#         44
+  C:017BH         LINE#         45
+  C:018FH         LINE#         46
+  -------         ENDPROC       _DELAY
+  -------         PROC          MAIN
+  -------         DO            
+  D:001AH         SYMBOL        i
+  -------         ENDDO         
+  C:000EH         LINE#         50
+  C:000EH         LINE#         51
+  C:000EH         LINE#         52
+  C:0011H         LINE#         55
+  C:0011H         LINE#         56
+  C:0011H         LINE#         60
+  C:003AH         LINE#         61
+  C:0063H         LINE#         62
+  C:008CH         LINE#         63
+  C:00A8H         LINE#         66
+  C:00ABH         LINE#         67
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/27/2020  10:50:40  PAGE 3
+
+
+  C:00B6H         LINE#         69
+  C:00DCH         LINE#         70
+  C:00DCH         LINE#         71
+  C:00E0H         LINE#         72
+  C:00E8H         LINE#         73
+  C:00ECH         LINE#         74
+  C:00F4H         LINE#         75
+  C:00F8H         LINE#         76
+  C:0100H         LINE#         77
+  C:0104H         LINE#         78
+  C:010AH         LINE#         80
+  C:010AH         LINE#         82
+  C:0111H         LINE#         83
+  -------         ENDPROC       MAIN
+  -------         PROC          T0ZD
+  C:01A5H         LINE#         95
+  C:01A7H         LINE#         100
+  C:01AAH         LINE#         101
+  C:01ADH         LINE#         103
+  C:01B5H         LINE#         104
+  -------         ENDPROC       T0ZD
+  -------         ENDMOD        TIMEER0
+
+  -------         MODULE        ?C?UIDIV
+  C:011DH         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+Program Size: data=28.0 xdata=0 code=459
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
