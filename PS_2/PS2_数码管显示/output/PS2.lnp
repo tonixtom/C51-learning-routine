@@ -1,0 +1,3 @@
+".\output\ps2.obj" 
+TO ".\output\PS2" 
+PRINT(".\listing\PS2.m51") RAMSIZE(256) 

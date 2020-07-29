@@ -1,4 +1,0 @@
-"STARTUP.obj",
-"LED_Num.obj" 
-TO "595-LED" 
-RAMSIZE(256) 

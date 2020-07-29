@@ -1,0 +1,125 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        07/29/2020  21:46:38  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\output\led.obj TO .\output\led PRINT (.\listing\led.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\led.obj (LED)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\output\led (LED)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         _DATA_GROUP_
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0026H     UNIT         ?PR?MAIN?LED
+            CODE    0029H     0026H     UNIT         ?PR?_HC595SENDDATA?LED
+            CODE    004FH     001EH     UNIT         ?PR?_DELAY?LED
+            CODE    006DH     0010H     UNIT         ?CO?LED
+            CODE    007DH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\output\led (LED)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?LED
+
+?PR?MAIN?LED                   0008H    0003H
+  +--> ?CO?LED
+  +--> ?PR?_HC595SENDDATA?LED
+  +--> ?PR?_DELAY?LED
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\led (LED)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        LED
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00B0H         PUBLIC        P3
+  B:00B0H.4       PUBLIC        MOSIO
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/29/2020  21:46:38  PAGE 2
+
+
+  C:006DH         PUBLIC        LED7Code
+  B:00B0H.5       PUBLIC        R_CLK
+  B:00B0H.6       PUBLIC        S_CLK
+  C:004FH         PUBLIC        _delay
+  C:0003H         PUBLIC        main
+  C:0029H         PUBLIC        _HC595SendData
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        HC595SendVal
+  D:0009H         SYMBOL        LedNumVal
+  -------         ENDDO         
+  C:0003H         LINE#         28
+  C:0003H         LINE#         29
+  C:0003H         LINE#         32
+  C:0003H         LINE#         33
+  C:0003H         LINE#         34
+  C:000BH         LINE#         35
+  C:001CH         LINE#         36
+  C:0020H         LINE#         37
+  C:0027H         LINE#         39
+  -------         ENDPROC       MAIN
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        i
+  -------         DO            
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:004FH         LINE#         42
+  C:004FH         LINE#         43
+  C:004FH         LINE#         45
+  C:0058H         LINE#         46
+  C:006CH         LINE#         47
+  -------         ENDPROC       _DELAY
+  -------         PROC          _HC595SENDDATA
+  D:0007H         SYMBOL        SendVal
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:0029H         LINE#         54
+  C:0029H         LINE#         55
+  C:0029H         LINE#         58
+  C:002BH         LINE#         59
+  C:002BH         LINE#         60
+  C:003CH         LINE#         61
+  C:003EH         LINE#         63
+  C:0040H         LINE#         64
+  C:0041H         LINE#         65
+  C:0042H         LINE#         66
+  C:0044H         LINE#         68
+  C:0048H         LINE#         71
+  C:004AH         LINE#         72
+  C:004BH         LINE#         73
+  C:004CH         LINE#         74
+  C:004EH         LINE#         77
+  -------         ENDPROC       _HC595SENDDATA
+  -------         ENDMOD        LED
+
+Program Size: data=12.0 xdata=0 code=137
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/29/2020  21:46:38  PAGE 3
+
+
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
