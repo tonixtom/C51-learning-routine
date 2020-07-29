@@ -1,0 +1,91 @@
+C51 COMPILER V9.54   MAIN                                                                  07/29/2020 11:20:14 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\output\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE code\main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\listing\
+                    -main.lst) TABS(2) OBJECT(.\output\main.obj)
+
+line level    source
+
+   1          /*******************************************************************************
+   2          *                 
+   3          *                            普中科技
+   4          --------------------------------------------------------------------------------
+   5          * 实 验 名     : RS232串口试验
+   6          * 实验说明       : 单片机将接收到的数据以10进制显示在LCD1602上面。
+   7          * 连接方式       : 见连接图
+   8          * 注    意     : 
+   9          *******************************************************************************/
+  10          
+  11          #include<reg51.h>
+  12          #include"lcd.h"
+  13          
+  14          //--定义全局函数--//
+  15          unsigned char ChCode[14] = "Received data:";
+  16          //--声明全局函数--//     
+  17          void UsartConfiguration();
+  18          /*******************************************************************************
+  19          * 函 数 名         : main
+  20          * 函数功能       : 主函数
+  21          * 输    入         : 无
+  22          * 输    出         : 无
+  23          *******************************************************************************/
+  24          
+  25          void main()
+  26          {
+  27   1        unsigned char i, receiveData;
+  28   1      
+  29   1        LcdInit();
+  30   1        for(i=0; i<14; i++)
+  31   1        {
+  32   2          LcdWriteData(ChCode[i]);
+  33   2        }
+  34   1        UsartConfiguration();
+  35   1        while(1)
+  36   1        {
+  37   2          if(RI == 1)       //查看是否接收到数据
+  38   2          {
+  39   3            receiveData = SBUF; //读取数据
+  40   3            RI = 0;       //清除标志位
+  41   3            LcdWriteCom(0xC0);
+  42   3      
+  43   3            //--因为一次接受只能接收到8位数据，最大为255，所以只用显示百位之后--//
+  44   3            LcdWriteData('0' + (receiveData / 100));      // 百位
+  45   3            LcdWriteData('0' + (receiveData % 100 / 10)); // 十位
+  46   3            LcdWriteData('0' + (receiveData % 10));     // 个位
+  47   3          }
+  48   2        }
+  49   1      }
+  50          /*******************************************************************************
+  51          * 函 数 名         :UsartConfiguration()
+  52          * 函数功能       :设置串口
+  53          * 输    入         : 无
+  54          * 输    出         : 无
+C51 COMPILER V9.54   MAIN                                                                  07/29/2020 11:20:14 PAGE 2   
+
+  55          *******************************************************************************/
+  56          
+  57          void UsartConfiguration()
+  58          {
+  59   1        SCON=0X50;      //设置为工作方式1
+  60   1        TMOD=0X20;      //设置计数器工作方式2
+  61   1        PCON=0X80;      //波特率加倍
+  62   1        TH1=0XF3;       //计数器初始值设置，注意波特率是4800的
+  63   1        TL1=0XF3;
+  64   1        TR1=1;              //打开计数器
+  65   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    105    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     14       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

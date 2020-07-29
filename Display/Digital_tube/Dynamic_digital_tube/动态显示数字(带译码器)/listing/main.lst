@@ -1,0 +1,110 @@
+C51 COMPILER V9.54   MAIN                                                                  07/29/2020 10:23:57 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\output\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\listing\main.
+                    -lst) TABS(2) OBJECT(.\output\main.obj)
+
+line level    source
+
+   1          /*******************************************************************************
+   2          *                 
+   3          *                            普中科技
+   4          --------------------------------------------------------------------------------
+   5          * 实 验 名     : 动态数码管显示试验
+   6          * 实验说明       : 8位数码管显示0~7
+   7          * 连接方式       : 见连接图
+   8          * 注    意     : 
+   9          *******************************************************************************/
+  10          
+  11          #include<reg51.h>
+  12          
+  13          //--定义使用的IO--//
+  14          #define GPIO_DIG P0
+  15          
+  16          sbit LSA=P2^2;
+  17          sbit LSB=P2^3;
+  18          sbit LSC=P2^4;
+  19          
+  20          //--定义全局变量--//
+  21          unsigned char code DIG_CODE[17]={
+  22          0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,
+  23          0x7f,0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71};
+  24          //0、1、2、3、4、5、6、7、8、9、A、b、C、d、E、F的显示码
+  25          unsigned char DisplayData[8];
+  26          //用来存放要显示的8位数的值
+  27          
+  28          //--声明全局函数--//
+  29          void DigDisplay(); //动态显示函数
+  30          /*******************************************************************************
+  31          * 函 数 名         : main
+  32          * 函数功能       : 主函数
+  33          * 输    入         : 无
+  34          * 输    出         : 无
+  35          *******************************************************************************/
+  36          void main(void)
+  37          {
+  38   1        unsigned char i;
+  39   1        for(i=0;i<8;i++)
+  40   1        {
+  41   2          DisplayData[i]=DIG_CODE[i]; 
+  42   2        }
+  43   1        while(1)
+  44   1        {
+  45   2          DigDisplay();
+  46   2        }       
+  47   1      }
+  48          /*******************************************************************************
+  49          * 函 数 名         : DigDisplay
+  50          * 函数功能       : 使用数码管显示
+  51          * 输    入         : 无
+  52          * 输    出         : 无
+  53          *******************************************************************************/
+  54          void DigDisplay()
+C51 COMPILER V9.54   MAIN                                                                  07/29/2020 10:23:57 PAGE 2   
+
+  55          {
+  56   1        unsigned char i;
+  57   1        unsigned int j;
+  58   1        for(i=0;i<8;i++)
+  59   1        {
+  60   2          switch(i)  //位选，选择点亮的数码管，
+  61   2          {
+  62   3            case(0):
+  63   3              LSA=0;LSB=0;LSC=0; break;//显示第0位
+  64   3            case(1):
+  65   3              LSA=1;LSB=0;LSC=0; break;//显示第1位
+  66   3            case(2):
+  67   3              LSA=0;LSB=1;LSC=0; break;//显示第2位
+  68   3            case(3):
+  69   3              LSA=1;LSB=1;LSC=0; break;//显示第3位
+  70   3            case(4):
+  71   3              LSA=0;LSB=0;LSC=1; break;//显示第4位
+  72   3            case(5):
+  73   3              LSA=1;LSB=0;LSC=1; break;//显示第5位
+  74   3            case(6):
+  75   3              LSA=0;LSB=1;LSC=1; break;//显示第6位
+  76   3            case(7):
+  77   3              LSA=1;LSB=1;LSC=1; break;//显示第7位  
+  78   3          }
+  79   2          GPIO_DIG=DisplayData[i];//发送段码
+  80   2          j=10;            //扫描间隔时间设定
+  81   2          while(j--); 
+  82   2          GPIO_DIG=0x00;//消隐
+  83   2        }
+  84   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    139    ----
+   CONSTANT SIZE    =     17    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      8    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

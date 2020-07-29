@@ -1,10 +1,10 @@
-C51 COMPILER V9.56.0.0   PWM                                                               01/16/2020 21:05:23 PAGE 1   
+C51 COMPILER V9.54   PWM                                                                   07/29/2020 11:25:48 PAGE 1   
 
 
-C51 COMPILER V9.56.0.0, COMPILATION OF MODULE PWM
+C51 COMPILER V9.54, COMPILATION OF MODULE PWM
 OBJECT MODULE PLACED IN .\Objects\PWM.obj
-COMPILER INVOKED BY: G:\softs\kile_v5_S\C51\BIN\C51.EXE PWM.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listin
-                    -gs\PWM.lst) TABS(2) OBJECT(.\Objects\PWM.obj)
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE PWM.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\PWM.l
+                    -st) TABS(2) OBJECT(.\Objects\PWM.obj)
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
   52          
   53          /*******************************************************************************
   54          * 函 数 名       : Time1
-C51 COMPILER V9.56.0.0   PWM                                                               01/16/2020 21:05:23 PAGE 2   
+C51 COMPILER V9.54   PWM                                                                   07/29/2020 11:25:48 PAGE 2   
 
   55          * 函数功能     : 定时器1的中断函数
   56          * 输    入       : 无

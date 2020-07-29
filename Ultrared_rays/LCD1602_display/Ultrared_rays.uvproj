@@ -366,12 +366,12 @@
             <File>
               <FileName>lcd.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\lcd.c</FilePath>
+              <FilePath>.\code\lcd.c</FilePath>
             </File>
             <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\main.c</FilePath>
+              <FilePath>.\code\main.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -1,0 +1,126 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        07/29/2020  10:23:57  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\output\main.obj TO .\output\pro PRINT (.\listing\pro.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\main.obj (MAIN)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\output\pro (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0008H     UNIT         ?DT?MAIN
+            IDATA   0010H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0074H     UNIT         ?PR?DIGDISPLAY?MAIN
+            CODE    0077H     0017H     UNIT         ?PR?MAIN?MAIN
+            CODE    008EH     0011H     UNIT         ?CO?MAIN
+            CODE    009FH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\output\pro (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN
+  +--> ?CO?MAIN
+  +--> ?PR?DIGDISPLAY?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\pro (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:00A0H         PUBLIC        P2
+  C:0077H         PUBLIC        main
+  C:008EH         PUBLIC        DIG_CODE
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/29/2020  10:23:57  PAGE 2
+
+
+  D:0008H         PUBLIC        DisplayData
+  B:00A0H.2       PUBLIC        LSA
+  B:00A0H.3       PUBLIC        LSB
+  B:00A0H.4       PUBLIC        LSC
+  C:0003H         PUBLIC        DigDisplay
+  -------         PROC          MAIN
+  -------         DO            
+  D:0007H         SYMBOL        i
+  -------         ENDDO         
+  C:0077H         LINE#         36
+  C:0077H         LINE#         37
+  C:0077H         LINE#         39
+  C:0079H         LINE#         40
+  C:0079H         LINE#         41
+  C:0085H         LINE#         42
+  C:0089H         LINE#         43
+  C:0089H         LINE#         44
+  C:0089H         LINE#         45
+  C:008CH         LINE#         46
+  -------         ENDPROC       MAIN
+  -------         PROC          DIGDISPLAY
+  -------         DO            
+  D:0007H         SYMBOL        i
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:0003H         LINE#         54
+  C:0003H         LINE#         55
+  C:0003H         LINE#         58
+  C:0005H         LINE#         59
+  C:0005H         LINE#         60
+  C:002AH         LINE#         61
+  C:002AH         LINE#         62
+  C:002AH         LINE#         63
+  C:002EH         LINE#         64
+  C:002EH         LINE#         65
+  C:0036H         LINE#         66
+  C:0036H         LINE#         67
+  C:003AH         LINE#         68
+  C:003AH         LINE#         69
+  C:0042H         LINE#         70
+  C:0042H         LINE#         71
+  C:0046H         LINE#         72
+  C:0046H         LINE#         73
+  C:004EH         LINE#         74
+  C:004EH         LINE#         75
+  C:0052H         LINE#         76
+  C:0052H         LINE#         77
+  C:0058H         LINE#         78
+  C:0058H         LINE#         79
+  C:005FH         LINE#         80
+  C:0063H         LINE#         81
+  C:006DH         LINE#         82
+  C:0070H         LINE#         83
+  C:0076H         LINE#         84
+  -------         ENDPROC       DIGDISPLAY
+  -------         ENDMOD        MAIN
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/29/2020  10:23:57  PAGE 3
+
+
+Program Size: data=17.0 xdata=0 code=171
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

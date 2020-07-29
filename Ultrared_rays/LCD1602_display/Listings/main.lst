@@ -1,10 +1,10 @@
-C51 COMPILER V9.54   MAIN                                                                  07/10/2020 10:54:02 PAGE 1   
+C51 COMPILER V9.54   MAIN                                                                  07/29/2020 11:13:58 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
 OBJECT MODULE PLACED IN .\Objects\main.obj
-COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
-                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE code\main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings
+                    -\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
   52   3          }
   53   2          else
   54   2          {
-C51 COMPILER V9.54   MAIN                                                                  07/10/2020 10:54:02 PAGE 2   
+C51 COMPILER V9.54   MAIN                                                                  07/29/2020 11:13:58 PAGE 2   
 
   55   3            LcdWriteCom(0xc0+0x09);
   56   3            LcdWriteData(IrValue[4]+0x30);  //将数值转换为该显示的ASCII码
@@ -126,7 +126,7 @@ line level    source
  114   1      
  115   1        if(IRIN==0)   //确认是否真的接收到正确的信号
  116   1        {  
-C51 COMPILER V9.54   MAIN                                                                  07/10/2020 10:54:02 PAGE 3   
+C51 COMPILER V9.54   MAIN                                                                  07/29/2020 11:13:58 PAGE 3   
 
  117   2          
  118   2          err=1000;       //1000*10us=10ms,超过说明接收到错误的信号
@@ -190,7 +190,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    CONSTANT SIZE    =     26    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-C51 COMPILER V9.54   MAIN                                                                  07/10/2020 10:54:02 PAGE 4   
+C51 COMPILER V9.54   MAIN                                                                  07/29/2020 11:13:58 PAGE 4   
 
    DATA SIZE        =      7       2
    IDATA SIZE       =   ----    ----
