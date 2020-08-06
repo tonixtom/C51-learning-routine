@@ -1,0 +1,110 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/05/2020  09:12:07  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\output\232.obj TO .\output\int PRINT (.\listing\int.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\232.obj (232)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\output\int (232)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0023H     UNIT         ?PR?MAIN?232
+            CODE    0026H     000EH     UNIT         ?PR?_DELAY?232
+            CODE    0034H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\output\int (232)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?232
+
+?PR?MAIN?232
+  +--> ?PR?_DELAY?232
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\int (232)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        232
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  B:00B0H.7       PUBLIC        RS485E
+  D:00A8H         PUBLIC        IE
+  C:0026H         PUBLIC        _delay
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/05/2020  09:12:07  PAGE 2
+
+
+  B:00A8H.4       PUBLIC        ES
+  D:00B8H         PUBLIC        IP
+  C:0003H         PUBLIC        main
+  D:0099H         PUBLIC        SBUF
+  D:0087H         PUBLIC        PCON
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  D:008DH         PUBLIC        TH1
+  B:0088H.6       PUBLIC        TR1
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _DELAY
+  D:0007H         SYMBOL        i
+  -------         DO            
+  D:0006H         SYMBOL        j
+  -------         ENDDO         
+  C:0026H         LINE#         24
+  C:0026H         LINE#         25
+  C:0026H         LINE#         27
+  C:002CH         LINE#         28
+  C:0033H         LINE#         29
+  -------         ENDPROC       _DELAY
+  -------         PROC          MAIN
+  C:0003H         LINE#         32
+  C:0003H         LINE#         35
+  C:0006H         LINE#         36
+  C:0009H         LINE#         37
+  C:000CH         LINE#         39
+  C:000FH         LINE#         41
+  C:0011H         LINE#         42
+  C:0013H         LINE#         43
+  C:0015H         LINE#         46
+  C:0015H         LINE#         47
+  C:0015H         LINE#         49
+  C:001AH         LINE#         50
+  C:001AH         LINE#         51
+  C:001CH         LINE#         52
+  C:001FH         LINE#         53
+  C:0024H         LINE#         54
+  C:0024H         LINE#         56
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        232
+
+Program Size: data=9.0 xdata=0 code=64
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
