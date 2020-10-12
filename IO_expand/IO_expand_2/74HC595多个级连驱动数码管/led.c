@@ -20,15 +20,17 @@ unsigned char code LED_0F[] =
 
 // 函数原形定义
 #define uchar unsigned char
+	
 
 void OUT_595(void);
 void WR_595(unsigned char SendVal);
-
-
+void display_num(void);
+void disp_init();
 uchar out_calc(uchar xian);
 
 
 unsigned char code LED_0F[];		// LED字模表
+uchar second,dp_num=0;
 
 sbit MOSIO = P1^2;				//串行数据输入
 sbit R_CLK  = P1^0;				//时钟脉冲信号——上升沿有效
@@ -45,36 +47,75 @@ uchar temp;
 //
 void main (void) 
 {
+	TMOD=0X01; //T0工作方式1
+	TH0=(65536-10000)/256;
+	TL0=(65536-10000)%256;	 //10毫秒中断一次
+	EA=1;
+	ET0=1;
+	TR0=1;
 	
+	disp_init();
+
+	
+	while(1)
+	{
+		
+	}
+	
+
+}
+
+
+void T0_SEVR() interrupt 1
+{
+	int i;
+	TH0=(65536-40000)/256;
+	TL0=(65536-40000)%256;
+	second++;
+	if(second==20)
+	{
+		second=0;
+		for(i=0;i<8;i++)
+			LED[i]=dp_num%17;
+		dp_num++;
+		if(dp_num>100)
+			dp_num=0;
+	}
+
+	display_num();
+
+}
+
+void disp_init()
+{
 	LED[0]=1;
 	LED[1]=2;
 	LED[2]=3;
 	LED[3]=4;
-	LED[4]=5;
-	LED[5]=6;
-	LED[6]=7;
+	LED[4]=13;
+	LED[5]=12;
+	LED[6]=14;
 	LED[7]=15;
 
 	S_CLK = 0;
-	R_CLK = 1;  
-	while(1)             
-    {
-    
-		WR_595(out_calc(0));			 //输入8位
-		WR_595(out_calc(1));			 //输入8位
-		WR_595(out_calc(2));			 //输入8位
-		WR_595(out_calc(3));			 //输入8位
-		WR_595(out_calc(4));			 //输入8位
-		WR_595(out_calc(5));			 //输入8位
-		WR_595(out_calc(6));			 //输入8位
-		WR_595(out_calc(7));			 //输入8位
-		
-		OUT_595();			 //锁存并输出
+	R_CLK = 1; 
+}
+void display_num(void)
+{	
+	
 
-    }
+	WR_595(out_calc(0));			 //输入8位
+	WR_595(out_calc(1));			 //输入8位
+	WR_595(out_calc(2));			 //输入8位
+	WR_595(out_calc(3));			 //输入8位
+	WR_595(out_calc(4));			 //输入8位
+	WR_595(out_calc(5));			 //输入8位
+	WR_595(out_calc(6));			 //输入8位
+	WR_595(out_calc(7));			 //输入8位
+	
+	OUT_595();			 //锁存并输出
 
 }
-
 
 uchar out_calc(uchar xian)
 {
@@ -120,7 +161,5 @@ void WR_595(unsigned char SendVal)
 	NOP();  //短暂延时
 	R_CLK=0;
 }
-
-
 
 
