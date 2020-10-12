@@ -1,5 +1,0 @@
-".\output\ds1302.obj",
-".\output\lcd.obj",
-".\output\main.obj" 
-TO ".\output\pro" 
-PRINT(".\listing\pro.m51")

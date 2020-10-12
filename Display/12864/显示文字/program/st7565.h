@@ -19,11 +19,13 @@
 
 //--定时使用的IO口--//
 #define DATA_PORT P0
-sbit LCD12864_CS   = P3^2;
-sbit LCD12864_RSET = P3^3;
-sbit LCD12864_RS   = P2^6;
-sbit LCD12864_RW   = P2^7;
-sbit LCD12864_RD   = P2^5;
+
+sbit LCD12864_RSET = P2^0;
+sbit LCD12864_CS   = P2^1;
+
+sbit LCD12864_RW   = P2^2;
+sbit LCD12864_RD   = P2^3;
+sbit LCD12864_RS   = P2^4;
 
 //--定义全局函数--//
 void LcdSt7565_WriteCmd(cmd);

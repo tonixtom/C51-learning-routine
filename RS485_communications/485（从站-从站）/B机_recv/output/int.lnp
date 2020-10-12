@@ -1,3 +1,0 @@
-".\output\232.obj" 
-TO ".\output\int" 
-PRINT(".\listing\int.m51") RAMSIZE(256) 

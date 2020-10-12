@@ -1,3 +1,0 @@
-".\output\led.obj" 
-TO ".\output\led" 
-PRINT(".\listing\led.m51") RAMSIZE(256) 

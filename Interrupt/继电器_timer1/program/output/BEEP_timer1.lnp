@@ -1,3 +1,0 @@
-".\output\beep_timer1.obj" 
-TO ".\output\BEEP_timer1" 
-PRINT(".\listing\BEEP_timer1.m51") RAMSIZE(256) 

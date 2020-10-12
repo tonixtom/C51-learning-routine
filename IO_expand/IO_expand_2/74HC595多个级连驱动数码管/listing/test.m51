@@ -1,0 +1,152 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/12/2020  16:14:01  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL_V5\C51\BIN\BL51.EXE .\output\led.obj TO .\output\test PRINT (.\listing\test.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\led.obj (LED)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\output\test (LED)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0009H     UNIT         ?DT?LED
+            IDATA   0011H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0061H     UNIT         ?PR?MAIN?LED
+            CODE    0064H     0020H     UNIT         ?PR?_WR_595?LED
+            CODE    0084H     0014H     UNIT         ?PR?_OUT_CALC?LED
+            CODE    0098H     0011H     UNIT         ?CO?LED
+            CODE    00A9H     000CH     UNIT         ?C_C51STARTUP
+            CODE    00B5H     000BH     UNIT         ?PR?OUT_595?LED
+
+
+
+OVERLAY MAP OF MODULE:   .\output\test (LED)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?LED
+
+?PR?MAIN?LED
+  +--> ?PR?_OUT_CALC?LED
+  +--> ?PR?_WR_595?LED
+  +--> ?PR?OUT_595?LED
+
+?PR?_OUT_CALC?LED
+  +--> ?CO?LED
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\test (LED)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/12/2020  16:14:01  PAGE 2
+
+
+  -------         MODULE        LED
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  B:0090H.2       PUBLIC        MOSIO
+  B:0090H.0       PUBLIC        R_CLK
+  B:0090H.1       PUBLIC        S_CLK
+  C:0003H         PUBLIC        main
+  C:0098H         PUBLIC        LED_0F
+  C:0064H         PUBLIC        _WR_595
+  D:0008H         PUBLIC        temp
+  C:0084H         PUBLIC        _out_calc
+  D:0009H         PUBLIC        LED
+  C:00B5H         PUBLIC        OUT_595
+  -------         PROC          MAIN
+  C:0003H         LINE#         46
+  C:0003H         LINE#         47
+  C:0003H         LINE#         49
+  C:0006H         LINE#         50
+  C:0009H         LINE#         51
+  C:000CH         LINE#         52
+  C:000FH         LINE#         53
+  C:0012H         LINE#         54
+  C:0015H         LINE#         55
+  C:0018H         LINE#         56
+  C:001BH         LINE#         58
+  C:001DH         LINE#         59
+  C:001FH         LINE#         60
+  C:001FH         LINE#         61
+  C:001FH         LINE#         63
+  C:0027H         LINE#         64
+  C:002FH         LINE#         65
+  C:0037H         LINE#         66
+  C:003FH         LINE#         67
+  C:0047H         LINE#         68
+  C:004FH         LINE#         69
+  C:0057H         LINE#         70
+  C:005FH         LINE#         72
+  C:0062H         LINE#         74
+  -------         ENDPROC       MAIN
+  -------         PROC          _OUT_CALC
+  D:0007H         SYMBOL        xian
+  -------         DO            
+  D:0082H         SYMBOL        led_table
+  -------         ENDDO         
+  C:0084H         LINE#         79
+  C:0084H         LINE#         80
+  C:0084H         LINE#         82
+  C:0092H         LINE#         83
+  C:0096H         LINE#         84
+  C:0097H         LINE#         85
+  -------         ENDPROC       _OUT_CALC
+  -------         PROC          _WR_595
+  D:0007H         SYMBOL        SendVal
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:0064H         LINE#         88
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/12/2020  16:14:01  PAGE 3
+
+
+  C:0064H         LINE#         89
+  C:0064H         LINE#         92
+  C:0066H         LINE#         93
+  C:0066H         LINE#         94
+  C:0077H         LINE#         95
+  C:0079H         LINE#         97
+  C:007BH         LINE#         98
+  C:007CH         LINE#         99
+  C:007DH         LINE#         100
+  C:007FH         LINE#         102
+  C:0083H         LINE#         104
+  -------         ENDPROC       _WR_595
+  -------         PROC          OUT_595
+  C:00B5H         LINE#         113
+  C:00B5H         LINE#         114
+  C:00B5H         LINE#         115
+  C:00B7H         LINE#         116
+  C:00B8H         LINE#         117
+  C:00B9H         LINE#         118
+  C:00BBH         LINE#         119
+  C:00BCH         LINE#         120
+  C:00BDH         LINE#         121
+  C:00BFH         LINE#         122
+  -------         ENDPROC       OUT_595
+  -------         ENDMOD        LED
+
+Program Size: data=18.0 xdata=0 code=192
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

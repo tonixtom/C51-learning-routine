@@ -1,3 +1,0 @@
-".\output\counter.obj" 
-TO ".\output\counter" 
-PRINT(".\listing\counter.m51") RAMSIZE(256) 

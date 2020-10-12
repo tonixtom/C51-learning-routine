@@ -1,4 +1,0 @@
-".\Objects\lcd.obj",
-".\Objects\main.obj" 
-TO ".\Objects\Ultrared_rays" 
-PRINT(".\Listings\Ultrared_rays.m51")

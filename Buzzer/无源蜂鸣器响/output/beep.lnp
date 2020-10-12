@@ -1,3 +1,0 @@
-".\output\beep.obj" 
-TO ".\output\beep" 
-PRINT(".\listing\beep.m51")

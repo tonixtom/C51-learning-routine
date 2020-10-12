@@ -1,3 +1,0 @@
-".\output\main.obj" 
-TO ".\output\DA_PWM" 
-PRINT(".\listing\DA_PWM.m51")

@@ -13,22 +13,23 @@ void Delay10ms(unsigned int c);
 
 void main()
 {
-	uchar i = 128;
+
 	Lcd12864_Init();
 	Lcd12864_ClearScreen();
-		
+/*		
 	while (1)
 	{
-		for (i=0; i<8; i += 2)
-		{
-			Lcd12864_ClearScreen();
-
-			//--由于这个函数显示方向正好相反--//
-			Lcd12864_Write16CnCHAR(0, i, "司公限有技科中普");
-			Delay10ms(100);
-		}
-	
+		Lcd12864_Write16CnCHAR(0, 0, "司公限有技科中普");
+		Delay10ms(100);
+		Lcd12864_Write16CnCHAR(0, 2, "司公限有技科中普");
+		Delay10ms(100);
+		Lcd12864_Write16CnCHAR(0, 4, "司公限有技科中普");
+		Delay10ms(100);
+		Lcd12864_Write16CnCHAR(0, 6, "司公限有技科中普");
+		Delay10ms(100);
 	}
+	*/
+
 }
 
 /*******************************************************************************

@@ -1,5 +1,0 @@
-".\output\lcd.obj",
-".\output\main.obj",
-".\output\XPT2046.obj" 
-TO ".\output\AD" 
-PRINT(".\listing\AD.m51")

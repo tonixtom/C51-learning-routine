@@ -1,3 +1,0 @@
-".\output\步进马达.obj" 
-TO ".\output\步进马达" 
-PRINT(".\listing\步进马达.m51") RAMSIZE(256) 

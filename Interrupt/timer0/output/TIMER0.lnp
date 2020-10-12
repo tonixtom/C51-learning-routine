@@ -1,3 +1,0 @@
-".\output\TIMEER0.obj" 
-TO ".\output\TIMER0" 
-PRINT(".\listing\TIMER0.m51") RAMSIZE(256) 

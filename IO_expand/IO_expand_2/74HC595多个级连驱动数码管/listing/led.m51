@@ -1,0 +1,134 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/12/2020  12:11:05  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL_V5\C51\BIN\BL51.EXE .\output\led.obj TO .\output\led PRINT (.\listing\led.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\led.obj (LED)
+  D:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\output\led (LED)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0008H     UNIT         ?DT?LED
+            DATA    0010H     0001H     UNIT         _DATA_GROUP_
+            IDATA   0011H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     003BH     UNIT         ?PR?LED4_DISPLAY?LED
+            CODE    003EH     001DH     UNIT         ?PR?MAIN?LED
+            CODE    005BH     0017H     UNIT         ?PR?_LED_OUT?LED
+            CODE    0072H     0011H     UNIT         ?CO?LED
+            CODE    0083H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\output\led (LED)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?LED
+
+?PR?MAIN?LED                   -----    -----
+  +--> ?PR?LED4_DISPLAY?LED
+
+?PR?LED4_DISPLAY?LED           0010H    0001H
+  +--> ?CO?LED
+  +--> ?PR?_LED_OUT?LED
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\led (LED)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        LED
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/12/2020  12:11:05  PAGE 2
+
+
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  C:003EH         PUBLIC        main
+  C:0072H         PUBLIC        LED_0F
+  B:0090H.1       PUBLIC        RCLK
+  B:0090H.2       PUBLIC        SCLK
+  C:005BH         PUBLIC        _LED_OUT
+  C:0003H         PUBLIC        LED4_Display
+  D:0008H         PUBLIC        LED
+  B:0090H.0       PUBLIC        DIO
+  -------         PROC          MAIN
+  C:003EH         LINE#         32
+  C:003EH         LINE#         33
+  C:003EH         LINE#         35
+  C:0041H         LINE#         36
+  C:0044H         LINE#         37
+  C:0047H         LINE#         38
+  C:004AH         LINE#         39
+  C:004DH         LINE#         40
+  C:0050H         LINE#         41
+  C:0053H         LINE#         42
+  C:0056H         LINE#         44
+  C:0056H         LINE#         45
+  C:0056H         LINE#         46
+  C:0059H         LINE#         47
+  -------         ENDPROC       MAIN
+  -------         PROC          LED4_DISPLAY
+  -------         DO            
+  D:0082H         SYMBOL        led_table
+  D:0010H         SYMBOL        i
+  -------         ENDDO         
+  C:0003H         LINE#         50
+  C:0003H         LINE#         51
+  C:0003H         LINE#         55
+  C:000EH         LINE#         56
+  C:0012H         LINE#         58
+  C:0016H         LINE#         59
+  C:001BH         LINE#         60
+  C:0020H         LINE#         61
+  C:0025H         LINE#         62
+  C:002AH         LINE#         63
+  C:002FH         LINE#         64
+  C:0034H         LINE#         65
+  C:0039H         LINE#         68
+  C:003BH         LINE#         69
+  C:003DH         LINE#         72
+  -------         ENDPROC       LED4_DISPLAY
+  -------         PROC          _LED_OUT
+  D:0007H         SYMBOL        X
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:005BH         LINE#         74
+  C:005BH         LINE#         75
+  C:005BH         LINE#         77
+  C:005DH         LINE#         78
+  C:005DH         LINE#         79
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/12/2020  12:11:05  PAGE 3
+
+
+  C:0067H         LINE#         80
+  C:006BH         LINE#         81
+  C:006DH         LINE#         82
+  C:006FH         LINE#         83
+  C:0071H         LINE#         84
+  -------         ENDPROC       _LED_OUT
+  -------         ENDMOD        LED
+
+Program Size: data=18.0 xdata=0 code=143
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
